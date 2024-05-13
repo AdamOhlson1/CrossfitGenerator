@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
 using static System.Console;
 
 class Program {
@@ -26,12 +27,34 @@ class Program {
                     Main();
                     break;
             }
-
-        WriteLine("How long would you like the workout to be?\n 1. 10min\n 2. 15min\n 3. 20+min\n");
-        int Duration = Convert.ToInt32(ReadLine());
         
         WriteLine("This is your workout:\n ");
     
     }
 } 
 
+    public static void Exercises() 
+    {
+        List<string> CFExercises = new List<string>
+        {
+            "Burpees", "Pull-ups", "Wall Balls", "Push Ups", "Handstand Walk", "Handstand Push-up", "Thursters", "Box Jumps"
+        };
+    }
+
+    public static void ForTime()
+    {
+        WriteLine("How long would you like the workout to be?\n 1. 10min\n 2. 15min\n 3. 20+min\n");
+        int Duration = Convert.ToInt32(ReadLine());
+    }
+
+    public static void AMRAP()
+    {
+        WriteLine("How long would you like the workout to be?\n 1. 10min\n 2. 15min\n 3. 20+min\n");
+        int Duration = Convert.ToInt32(ReadLine());
+    }
+
+    public static void EMOM()
+    {
+        WriteLine("How long would you like the workout to be?\n 1. 10min\n 2. 15min\n 3. 20+min\n");
+        int Duration = Convert.ToInt32(ReadLine());
+    }
