@@ -41,7 +41,7 @@ efter längden på passet */
     {
         List<string> CFExercises = new List<string>
         {
-            "Burpees", "Pull-ups", "Wall Balls", "Push Ups", "Handstand Walk", "Handstand Push-up", "Thursters", "Box Jumps"
+            "Burpees", "Pull-ups", "Wall Balls", "Push Ups", "Handstand Walk", "Handstand Push-up", "Thursters", "Box Jumps", "Rodd", "BMU"
         };
 
 /* Denna delen ser väldigt kladdig ut så får fina till den senare, men den skapar tar ut ett random antal
@@ -69,22 +69,33 @@ programmet så ska även det bli mer avancerat och ligga inom ett spann iställe
         WriteLine("How long would you like the workout to be?\n 1. 10min\n 2. 15min\n 3. 20+min\n");
         int Duration = Convert.ToInt32(ReadLine());
 
-        int rounds;
-        int numExercises;
+/* Ändrade om här så att det slumpas mellan antalet rundor och antalet övningar, det krävs ytteliggare
+fin justering för att det verkligen ska passa tidsdomänen. Men hittills funkar det hyfsat. Jag vill 
+tillsist att antalet rundor ska anpassa antalet övningar och vise versa för att få den så korrekt 
+som möjligt */
+
+        int minRounds, maxRounds, minExercises, maxExercises;
+        Random random = new Random();
         
         switch (Duration)
         {
             case 1:
-                rounds = 3;
-                numExercises = 3; 
+                minRounds = 2;
+                maxRounds = 4;
+                minExercises = 2; 
+                maxExercises = 5;
                 break; 
             case 2:
-                rounds = 5;
-                numExercises = 5;
+                minRounds = 3;
+                maxRounds = 6;
+                minExercises = 4; 
+                maxExercises = 6;
                 break;
             case 3:
-                rounds = 10;
-                numExercises = 7;
+                minRounds = 7;
+                maxRounds = 10;
+                minExercises = 7; 
+                maxExercises = 10;
                 break;
             default:
                 WriteLine("Error invalid choice. Press enter to continue");
@@ -92,6 +103,9 @@ programmet så ska även det bli mer avancerat och ligga inom ett spann iställe
                 Main();
                 return;
         }
+
+        int rounds = random.Next(minRounds, maxRounds + 1); 
+        int numExercises = random.Next(minExercises, maxExercises + 1);
 
 /* Här kallar jag på övnings-funktionen för att kunna skriva ut de random genererade övningarna. 
 Tycker dock det skrivs ut väldigt fult så det får förfinas sen och som sagt ändra så att det inte är 
@@ -109,25 +123,31 @@ fast satta antal övningar och rundor utan randomiserat utefter ett spann */
 
     public static void AMRAP()
     {
-        WriteLine("How long would you like the workout to be?\n 1. 10min\n 2. 15min\n 3. 20+min\n");
+        WriteLine("How long would you like the workout to be?\n 1. 5-10min\n 2. 10-15min\n 3. 15-20min\n");
         int Duration = Convert.ToInt32(ReadLine());
 
-        int amrapLength;
-        int numExercises;
+        int minAmrapLength, maxAmrapLength, minExercises, maxExercises;
+        Random random = new Random();
 
         switch (Duration)
         {
             case 1:
-                amrapLength = 10;
-                numExercises = 3; 
+                minAmrapLength = 5;
+                maxAmrapLength = 10;
+                minExercises = 2;
+                maxExercises= 4; 
                 break; 
             case 2:
-                amrapLength = 15;
-                numExercises = 5;
+                minAmrapLength = 10;
+                maxAmrapLength = 15;
+                minExercises = 3;
+                maxExercises= 5; 
                 break;
             case 3:
-                amrapLength = 20;
-                numExercises = 7;
+                minAmrapLength = 15;
+                maxAmrapLength = 20;
+                minExercises = 5;
+                maxExercises= 7; 
                 break;
             default:
                 WriteLine("Error invalid choice. Press enter to continue");
@@ -135,6 +155,9 @@ fast satta antal övningar och rundor utan randomiserat utefter ett spann */
                 Main();
                 return;
         }
+
+            int amrapLength = random.Next(minAmrapLength, maxAmrapLength + 1); 
+            int numExercises = random.Next(minExercises, maxExercises + 1);
 
             List<string> exercises = Exercises(numExercises);
 
@@ -149,25 +172,31 @@ fast satta antal övningar och rundor utan randomiserat utefter ett spann */
 
     public static void EMOM()
     {
-        WriteLine("How long would you like the workout to be?\n 1. 10min\n 2. 15min\n 3. 20+min\n");
+        WriteLine("How long would you like the workout to be?\n 1. 10-14min\n 2. 15-20min\n 3. 20+min\n");
         int Duration = Convert.ToInt32(ReadLine());
 
-        int numExercises;
-        int emomLength;
+        int minEmomLength, maxEmomLength, minExercises, maxExercises;
+        Random random = new Random();
 
         switch (Duration)
         {
             case 1:
-                emomLength = 10;
-                numExercises = 3; 
+                minEmomLength = 10;
+                maxEmomLength = 14;
+                minExercises = 2;
+                maxExercises = 4; 
                 break; 
             case 2:
-                emomLength = 15;
-                numExercises = 5;
+                minEmomLength = 15;
+                maxEmomLength = 18;
+                minExercises = 3;
+                maxExercises = 5; 
                 break;
             case 3:
-                emomLength = 20;
-                numExercises = 7;
+                minEmomLength = 20;
+                maxEmomLength = 40;
+                minExercises = 4;
+                maxExercises = 6; 
                 break;
             default:
                 WriteLine("Error invalid choice. Press enter to continue");
@@ -175,6 +204,9 @@ fast satta antal övningar och rundor utan randomiserat utefter ett spann */
                 Main();
                 return;
         }
+
+            int emomLength = random.Next(minEmomLength, maxEmomLength + 1); 
+            int numExercises = random.Next(minExercises, maxExercises + 1);
 
             List<string> exercises = Exercises(numExercises);
 
