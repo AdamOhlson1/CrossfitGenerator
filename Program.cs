@@ -41,7 +41,11 @@ efter längden på passet */
     {
         List<string> CFExercises = new List<string>
         {
-            "Burpees", "Pull-ups", "Wall Balls", "Push Ups", "Handstand Walk", "Handstand Push-up", "Thursters", "Box Jumps", "Rodd", "BMU"
+        "Burpees", "Pull-ups", "Wall Balls", "Push Ups", "Handstand Walk", "Handstand Push-up", "Thursters", 
+        "Box Jumps", "Rodd", "MU", "BJO", "BBJO", "Box step-ups", "Box step-overs", "KBS", "GHD sit-ups", 
+        "Sit-ups", "TTB", "Cykel", "Löp", "SB carry", "SB over shoulder", "SB squats", "Farmers carry",
+        "Devils press", "DB snatch", "Snatch", "Clean and Jerk", "STO", "OHS", "FS", "Burpee get-over", 
+        "Clean", "Ski-erg", "Lunges", "Rope climb", "Pull overs", "Ab-mat sit-ups"
         };
 
 /* Denna delen ser väldigt kladdig ut så får fina till den senare, men den skapar tar ut ett random antal
@@ -106,6 +110,12 @@ som möjligt */
 
         int rounds = random.Next(minRounds, maxRounds + 1); 
         int numExercises = random.Next(minExercises, maxExercises + 1);
+
+
+/* Här är ett försök att antalet rundor och antalet övningar ska påverka varandra. Detta då får att 
+passet ska hållas inom tidsdomänen när det randomatiseras */
+        rounds = maxRounds - numExercises + minExercises;
+        //rounds = Math.Max(rounds, 2);
 
 /* Här kallar jag på övnings-funktionen för att kunna skriva ut de random genererade övningarna. 
 Tycker dock det skrivs ut väldigt fult så det får förfinas sen och som sagt ändra så att det inte är 
